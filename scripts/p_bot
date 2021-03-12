@@ -1,0 +1,19 @@
+#!/usr/bin/python3.8
+
+from aiogram import executor, Dispatcher
+
+from p_bot import bot, dp
+
+
+async def log_start_message(dispatcher: Dispatcher):
+    bot.logger.info("Start")
+
+if __name__ == '__main__':
+    try:
+        executor.start_polling(dp,
+                               on_startup=log_start_message,
+                               skip_updates=True)
+
+    except Exception as e:
+        bot.logger.exception(e)
+
